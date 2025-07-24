@@ -16,13 +16,13 @@ function generateMockup() {
     // Load user design image to overlay
     const userImg = new Image();
     userImg.crossOrigin = "anonymous";
-    userImg.src = "https://i.ibb.co/kVQGMB4P/waterfall.jpg"; // ✅ Your uploaded waterfall image
+    userImg.src = "https://i.ibb.co/kVQGMB4P/waterfall.jpg"; //  waterfall image
 
     userImg.onload = () => {
-      // Draw design onto t-shirt
-      ctx.drawImage(userImg, 150, 200, 290, 290); // Adjust placement here
+    
+      ctx.drawImage(userImg, 150, 200, 290, 290); 
 
-      // Generate mockup JSON
+      
       const mockupData = {
         product: "T-shirt",
         placement: "front",

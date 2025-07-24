@@ -16,11 +16,11 @@ words = description.lower().split()
 words = [word.strip(".,!?()[]") for word in words if word.isalpha()]
 filtered_words = [word for word in words if word not in stopwords.words('english')]
 
-# Get top tags
+
 word_freq = Counter(filtered_words)
 top_tags = [tag for tag, count in word_freq.most_common(8)]
 
-# Print and update product.json
+
 print("✅ Auto-generated tags (offline):")
 print(top_tags)
 
