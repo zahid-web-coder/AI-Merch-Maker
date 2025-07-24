@@ -137,8 +137,8 @@ php -S localhost:8000
 
 7.To run mockup generator:
 
-```Open mock_generator/index.html in your browser
-```
+Open mock_generator/index.html in your browser
+`
 ---
 
 ## 💡 Sample Output
