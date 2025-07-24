@@ -151,7 +151,7 @@ Bonus: NLP extracted auto_tags
 
 ---
 
-## 📸 Sample Output of json
+## 📸 Sample Output Sections
 
 ```json
 {
