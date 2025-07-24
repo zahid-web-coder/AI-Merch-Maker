@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# ✅ Step 1: Generate product info using ChatGPT
+#Step 1: Generated product info using ChatGPT
 def generate_product_info():
     prompt = (
         "Generate a cool and funny T-shirt product idea for an online merch store. "
@@ -24,7 +24,7 @@ def generate_product_info():
     message = response.choices[0].message.content
     return json.loads(message)
 
-# ✅ Step 2: Generate image using DALL·E
+#Step 2: Generated image using DALL·E
 def generate_image(prompt_text):
     response = openai.images.generate(
         prompt=prompt_text,
@@ -33,7 +33,7 @@ def generate_image(prompt_text):
     )
     return response.data[0].url
 
-# ✅ Step 3: Save result to file
+#Step 3: Saved result to file
 def main():
     product = generate_product_info()
     print("✅ Generated Product Info:")
