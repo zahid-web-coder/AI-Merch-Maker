@@ -33,26 +33,25 @@ This project was developed as part of the Smart Ecom Tech Internship Assignment.
 # AI-Merch-Maker
 
 AI-Merch-Maker/
-├── bonus/ # Bonus NLP tag generator
-│ └── bonus_tag_generator.py
+├── bonus/ # Bonus NLP tag generator   |
+│ └── bonus_tag_generator.py   |
 │ └── auto_tags.json
-├── content_generator/ # Step 1: GPT + DALL·E product.json
-│ └── generate_product.py
-│ └── product.json
-├── mock_generator/ # Step 2: Canvas-based T-shirt mockup
-│ └── index.html
-│ └── style.css
-│ └── script.js
-├── orchestrator/ # Step 4: Runs entire pipeline
-│ └── run_pipeline.py
-├── publisher_api/ # Step 3: Fake API (PHP)
-│ └── publish.php
-│ └── log.txt
-├── .env.example # Sample env file
-├── requirement.txt
-└── README.md 
+├── content_generator/ # Step 1: GPT + DALL·E product.json   |
+│ └── generate_product.py   |
+│ └── product.json   |
+├── mock_generator/ # Step 2: Canvas-based T-shirt mockup   |
+│ └── index.html   |
+│ └── style.css   |
+│ └── script.js   |
+├── orchestrator/ # Step 4: Runs entire pipeline   |
+│ └── run_pipeline.py   |
+├── publisher_api/ # Step 3: Fake API (PHP)   |
+│ └── publish.php   |
+│ └── log.txt   |
+├── .env.example # Sample env file   |
+├── requirement.txt   |
+└── README.md    |
 ---
-
 ---
 
 ## ⚙️ How It Works
