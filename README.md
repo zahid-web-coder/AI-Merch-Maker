@@ -34,7 +34,8 @@ This project:
 
 # AI-Merch-Maker
 
-```AI-Merch-Maker/
+```
+AI-Merch-Maker/
 ├── bonus/                         # 🔹 Bonus NLP Tag Generator (Offline)
 │   ├── bonus_tag_generator.py    # Extracts tags from description using NLTK
 │   └── auto_tags.json            # (Optional) Saved tags from the bonus script
