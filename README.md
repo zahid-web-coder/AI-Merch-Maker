@@ -58,7 +58,7 @@ AI-Merch-Maker/
 ├── requirements.txt              # 📦 Python dependencies
 └── README.md                     # 📘 Project documentation (you’re reading it!)
 
----
+
 ---
 
 ## ⚙️ How It Works
