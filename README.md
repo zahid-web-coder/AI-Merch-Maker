@@ -165,7 +165,9 @@ Bonus: NLP extracted auto_tags
 ---
 ## 🔐 Environment Setup
 Create a .env file with:
+```ini
 OPENAI_API_KEY=your_openai_api_key_here.
+```
 For demo purposes, the repo includes an offline fallback using product.json.
 
 ---
