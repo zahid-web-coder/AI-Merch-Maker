@@ -87,9 +87,62 @@ AI-Merch-Maker/
 - Uses NLTK to extract tags from description
 - Writes to `auto_tags.json` or directly updates `product.json`
 
+--- 
+
 ---
 
-## 📸 Sample Output
+## ⚙️ Setup Instructions
+
+1. **Clone this repo:**
+
+```bash
+git clone https://github.com/zahid-web-coder/AI-Merch-Maker.git
+cd AI-Merch-Maker
+---
+2. **Install dependencies:**
+
+```bash
+pip install -r requirements.txt
+Set up .env file:
+---
+3. **Create a .env file in root (or use .env.example) with your OpenAI key:**
+
+```ini
+OPENAI_API_KEY=your_openai_key_here
+---
+4.**To run offline fallback only:**
+
+```bash
+cd content_generator
+python generate_product_offline.py
+
+5.**To run full pipeline (requires API key):**
+
+```bash
+cd orchestrator
+python run_pipeline.py
+
+6.**To run mock server (Step 3):**
+
+```bash
+cd publisher_api
+php -S localhost:8000
+To run mockup generator:
+
+Open mock_generator/index.html in your browser.
+
+## 💡 Sample Output
+product.json: Contains generated title, description, tags, and image URL
+
+canvas preview of T-shirt mockup
+
+log.txt: Received JSON with all fields
+
+Bonus: NLP extracted auto_tags
+
+---
+
+## 📸 Sample Output of json
 
 ```json
 {
