@@ -1,17 +1,19 @@
 # AI Merch Maker Lite 🎨👕
 
-An end-to-end automation pipeline that generates creative T-shirt product content, overlays design mockups, and simulates publishing — built using Python, JavaScript, and PHP.
+An end-to-end AI-powered product automation pipeline that generates a T-shirt idea, mockup image, and simulates publishing — all with minimal manual input.
 
 ---
 
 ## 📦 Project Overview
 
-This project was developed as part of the Smart Ecom Tech Internship Assignment. It simulates an AI-driven merchandising system that:
-
-- Generates unique product content using GPT.
-- Creates mockup visuals using HTML5 Canvas.
-- Publishes the product through a mock PHP API.
-- Includes an optional bonus feature for AI-based tag generation.
+**AI Merch Maker Lite** is a 4-step project that combines AI + frontend + backend + scripting to simulate a real-world merch product pipeline.
+This project:
+- Auto-generates a T-shirt **title, description, and tags** using **OpenAI GPT**
+- Generates a product **image** using **DALL·E** or fallback
+- Creates a **mockup image** by overlaying the design on a T-shirt using **JavaScript canvas**
+- Simulates a **publishing API** using **PHP**
+- Automates the whole workflow using a **Python Orchestrator**
+- Includes an optional **bonus AI/NLP tag extractor** using `nltk`
 
 ---
 
