@@ -33,24 +33,31 @@ This project was developed as part of the Smart Ecom Tech Internship Assignment.
 # AI-Merch-Maker
 
 AI-Merch-Maker/
-├── bonus/ # Bonus NLP tag generator   |
-│ └── bonus_tag_generator.py   |
-│ └── auto_tags.json
-├── content_generator/ # Step 1: GPT + DALL·E product.json   |
-│ └── generate_product.py   |
-│ └── product.json   |
-├── mock_generator/ # Step 2: Canvas-based T-shirt mockup   |
-│ └── index.html   |
-│ └── style.css   |
-│ └── script.js   |
-├── orchestrator/ # Step 4: Runs entire pipeline   |
-│ └── run_pipeline.py   |
-├── publisher_api/ # Step 3: Fake API (PHP)   |
-│ └── publish.php   |
-│ └── log.txt   |
-├── .env.example # Sample env file   |
-├── requirement.txt   |
-└── README.md    |
+├── bonus/                         # 🔹 Bonus NLP Tag Generator (Offline)
+│   ├── bonus_tag_generator.py    # Extracts tags from description using NLTK
+│   └── auto_tags.json            # (Optional) Saved tags from the bonus script
+
+├── content_generator/            # ✅ Step 1: Product Content Generator (Python)
+│   ├── generate_product.py       # Uses OpenAI GPT + DALL·E
+│   ├── generate_product_offline.py # Offline fallback with hardcoded content
+│   └── product.json              # Generated product data
+
+├── mock_generator/               # ✅ Step 2: Mockup Generator (HTML + JS + CSS)
+│   ├── index.html                # Canvas-based UI for T-shirt mockup
+│   ├── style.css                 # Styling for the mockup UI
+│   └── script.js                 # Logic to overlay design on T-shirt
+
+├── publisher_api/                # ✅ Step 3: Fake Publisher API (PHP)
+│   ├── publish.php               # Receives and logs JSON product data
+│   └── log.txt                   # Log file with published data
+
+├── orchestrator/                 # ✅ Step 4: Automation Pipeline (Python)
+│   └── run_pipeline.py           # Combines all steps and sends data
+
+├── .env.example                  # 🔐 Sample environment config (API key placeholder)
+├── requirements.txt              # 📦 Python dependencies
+└── README.md                     # 📘 Project documentation (you’re reading it!)
+
 ---
 ---
 
