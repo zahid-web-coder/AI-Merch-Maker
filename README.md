@@ -65,25 +65,27 @@ AI-Merch-Maker/
 
 ## ⚙️ How It Works
 
-### 1. Content Generation (`content_generator/generate_product.py`)
-- Uses GPT to generate title, description, tags.
-- Uses DALL·E API or placeholder image to generate product image.
-- Stores everything in `product.json`.
+## ✅ Features Covered
 
-### 2. Mockup Generator (`mock_generator/index.html`)
-- Overlays the image onto a T-shirt template using HTML Canvas.
-- Generates mockup JSON like Printful.
+### Step 1: Product Content Generator (Python)
+- `generate_product.py`: Uses OpenAI GPT & DALL·E to create product data
+- `generate_product_offline.py`: Offline fallback using hardcoded JSON
+- Saves product info in `product.json`
 
-### 3. Publisher API (`publisher_api/publish.php`)
-- Accepts product data via POST.
-- Logs JSON data and returns a mock `product_id`.
+### Step 2: Mockup Generator (JavaScript)
+- HTML + Canvas overlay of design on a base T-shirt image
+- Outputs a JSON similar to Printful's API mockup
 
-### 4. Orchestrator (`orchestrator/run_pipeline.py`)
-- Runs the entire flow: content → mockup → publishing.
+### Step 3: Fake Publisher API (PHP)
+- `publish.php`: Accepts POST JSON and returns fake product ID
+- `log.txt`: Logs published data for verification
 
-### ⭐ Bonus: NLP-Based Tag Generator
-- Extracts keywords from product description.
-- Adds `auto_tags` to product JSON.
+### Step 4: Automation Orchestrator (Python)
+- `run_pipeline.py`: Triggers steps and simulates full product pipeline
+
+### 🏅 Bonus: AI/NLP Tag Generator (Optional)
+- Uses NLTK to extract tags from description
+- Writes to `auto_tags.json` or directly updates `product.json`
 
 ---
 
