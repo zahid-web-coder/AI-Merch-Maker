@@ -98,14 +98,17 @@ AI-Merch-Maker/
 ```bash
 git clone https://github.com/zahid-web-coder/AI-Merch-Maker.git
 cd AI-Merch-Maker
+```
 ---
+
 2. **Install dependencies:**
 
 ```bash
 pip install -r requirements.txt
-Set up .env file:
+```
 ---
-3. **Create a .env file in root (or use .env.example) with your OpenAI key:**
+3. Set up .env file:
+ **Create a .env file in root (or use .env.example) with your OpenAI key:**
 
 ```ini
 OPENAI_API_KEY=your_openai_key_here
