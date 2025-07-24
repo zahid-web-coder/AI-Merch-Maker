@@ -111,28 +111,30 @@ pip install -r requirements.txt
  **Create a .env file in root (or use .env.example) with your OpenAI key:**
 
 ```ini
-OPENAI_API_KEY=your_openai_key_here
+OPENAI_API_KEY=your_openai_key_here```
 ---
 4.**To run offline fallback only:**
 
 ```bash
 cd content_generator
-python generate_product_offline.py
+python generate_product_offline.py```
 
 5.**To run full pipeline (requires API key):**
 
 ```bash
 cd orchestrator
-python run_pipeline.py
+python run_pipeline.py```
 
 6.**To run mock server (Step 3):**
 
 ```bash
 cd publisher_api
-php -S localhost:8000
-To run mockup generator:
+php -S localhost:8000```
 
-Open mock_generator/index.html in your browser.
+7.To run mockup generator:
+
+```Open mock_generator/index.html in your browser```
+---
 
 ## 💡 Sample Output
 product.json: Contains generated title, description, tags, and image URL
