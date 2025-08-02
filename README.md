@@ -81,30 +81,51 @@ AI-Merch-Maker/
 ```
 
 ---
-
 ## ⚙️ How It Works
+
+This project automates the creation and upload of AI-generated T-shirt products using Gemini API (text), Hugging Face FLUX.1 (image), a custom mockup canvas, and the Shopify API.
+
+---
 
 ## ✅ Features Covered
 
-### Step 1: Product Content Generator (Python)
-- `generate_product.py`: Uses OpenAI GPT & DALL·E to create product data
-- `generate_product_offline.py`: Offline fallback using hardcoded JSON
-- Saves product info in `product.json`
+### 🧠 Step 1: Product Content Generator (Python)
+- `generate_product.py`: Uses **Gemini API** to generate a creative T-shirt title and description.
+- Saves the content into `product.json` for use in the pipeline.
 
-### Step 2: Mockup Generator (JavaScript)
-- HTML + Canvas overlay of design on a base T-shirt image
-- Outputs a JSON similar to Printful's API mockup
+### 🎨 Step 2: Image Generator (Python)
+- `generate_image.py`: Sends the Gemini prompt to **Hugging Face FLUX.1 API** (via fal.ai provider) to generate an AI image.
+- Saves it as `flux_image.png`.
 
-### Step 3: Fake Publisher API (PHP)
-- `publish.php`: Accepts POST JSON and returns fake product ID
-- `log.txt`: Logs published data for verification
+### 👕 Step 3: Mockup Generator (HTML + JS)
+- `mockup.html` + `script.js`: Uses **HTML5 Canvas** to place the generated image on a base T-shirt.
+- Creates a visual preview and a JSON metadata output.
+- Optional: uploads the mockup image manually to image hosting.
 
-### Step 4: Automation Orchestrator (Python)
-- `run_pipeline.py`: Triggers steps and simulates full product pipeline
+### 🚀 Step 4: Shopify Product Uploader (Python)
+- `upload_to_shopify.py`: Reads product data and mockup image URL.
+- Sends a **POST request** to the Shopify Admin API with title, description, tags, and product image.
+- Requires a `.env` file with `SHOPIFY_STORE` and `SHOPIFY_ACCESS_TOKEN`.
+
+### 🛰️ Step 5: Full Automation Orchestrator (Python)
+- `run_pipeline.py`: Calls all steps in order.
+- Automates reading product, attaching images, and posting the final product to Shopify.
 
 ### 🏅 Bonus: AI/NLP Tag Generator (Optional)
-- Uses NLTK to extract tags from description
-- Writes to `auto_tags.json` or directly updates `product.json`
+- Uses NLTK or hardcoded logic to generate product tags.
+- Stores tags in `auto_tags.json` or directly updates `product.json`.
+
+---
+
+
+---
+
+## 🔐 Environment Setup (.env file)
+```env
+GEMINI_API_KEY=your-gemini-api-key
+HF_API_TOKEN=your-huggingface-token
+SHOPIFY_STORE=your-store.myshopify.com
+SHOPIFY_ACCESS_TOKEN=your-shopify-access-token`
 
 --- 
 
