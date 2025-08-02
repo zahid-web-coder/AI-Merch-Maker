@@ -1,45 +1,28 @@
-function generateMockup() {
+function displayMockup() {
   const canvas = document.getElementById("mockupCanvas");
   const ctx = canvas.getContext("2d");
 
-  // Clear canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Load the pre-rendered flux_image.png (T-shirt with design)
+  const finalMockup = new Image();
+  finalMockup.crossOrigin = "anonymous";
+  finalMockup.src = "../content_generator/flux_image.png";  // Adjust path as needed
 
-  // Load base T-shirt template
-  const tshirtImg = new Image();
-  tshirtImg.crossOrigin = "anonymous";
-  tshirtImg.src = "https://i.ibb.co/8nW09dDw/t-shirt.png"; // T-shirt base image
+  finalMockup.onload = () => {
+    // Fit image to canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(finalMockup, 0, 0, canvas.width, canvas.height);
 
-  tshirtImg.onload = () => {
-    ctx.drawImage(tshirtImg, 0, 0, canvas.width, canvas.height);
-
-    // Load user design image to overlay
-    const userImg = new Image();
-    userImg.crossOrigin = "anonymous";
-    userImg.src = "https://i.ibb.co/kVQGMB4P/waterfall.jpg"; //  waterfall image
-
-    userImg.onload = () => {
-    
-      ctx.drawImage(userImg, 150, 200, 290, 290); 
-
-      
-      const mockupData = {
-        product: "T-shirt",
-        placement: "front",
-        print_area: "300x300 px",
-        mockup_image: canvas.toDataURL("image/png"),
-        image_source: userImg.src
-      };
-
-      document.getElementById("jsonOutput").innerText = JSON.stringify(mockupData, null, 2);
+    // Optional: Show JSON mockup info
+    const mockupData = {
+      image_used: finalMockup.src,
+      description: "AI-generated design printed on T-shirt using FLUX.1 model",
+      source: "Hugging Face Inference API"
     };
 
-    userImg.onerror = () => {
-      alert("Failed to load user design image.");
-    };
+    document.getElementById("jsonOutput").innerText = JSON.stringify(mockupData, null, 2);
   };
 
-  tshirtImg.onerror = () => {
-    alert("Failed to load t-shirt base image.");
+  finalMockup.onerror = () => {
+    alert("⚠️ Failed to load flux_image mockup.");
   };
 }

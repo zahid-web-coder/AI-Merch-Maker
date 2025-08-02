@@ -1,0 +1,4 @@
+.env
+flux_image.png
+*.pyc
+__pycache__/

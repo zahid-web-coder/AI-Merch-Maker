@@ -1,58 +1,38 @@
-import os
-import openai
-import json
+import google.generativeai as genai
 from dotenv import load_dotenv
+import os
+import json
 
-# Load API key from .env file
+# 🧪 Load environment variables
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-#Step 1: Generated product info using ChatGPT
-def generate_product_info():
-    prompt = (
-        "Generate a cool and funny T-shirt product idea for an online merch store. "
-        "Return a JSON with the following keys:\n"
-        "- title\n- description\n- tags (as a list of keywords)\n"
-    )
+# 🔑 Configure Gemini
+genai.configure(api_key=GEMINI_API_KEY)
 
-    response = openai.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.8
-    )
+# ⚡ Load the lightweight model
+model = genai.GenerativeModel("gemini-1.5-flash")
 
-    message = response.choices[0].message.content
-    return json.loads(message)
+# 🎯 Prompt
+prompt = "Generate a creative t-shirt product title and a short, fun description based on a futuristic AI concept."
 
-#Step 2: Generated image using DALL·E
-def generate_image(prompt_text):
-    response = openai.images.generate(
-        prompt=prompt_text,
-        n=1,
-        size="512x512"
-    )
-    return response.data[0].url
+# 💬 Generate content
+response = model.generate_content(prompt)
 
-#Step 3: Saved result to file
-def main():
-    product = generate_product_info()
-    print("✅ Generated Product Info:")
-    print(json.dumps(product, indent=2))
+# 🧾 Parse response
+product_data = {
+    "title": "Fallback Title",
+    "description": "Fallback Description"
+}
+try:
+    lines = response.text.split("\n")
+    product_data["title"] = lines[0]
+    product_data["description"] = " ".join(lines[1:])
+except Exception as e:
+    print("⚠️ Gemini error:", e)
 
-    image_url = generate_image(product['title'])
-    print("🖼️ Image URL:", image_url)
+# 💾 Save product.json
+with open("product.json", "w") as f:
+    json.dump(product_data, f, indent=2)
 
-    output = {
-        "title": product["title"],
-        "description": product["description"],
-        "tags": product["tags"],
-        "image_url": image_url
-    }
-
-    with open("product.json", "w") as f:
-        json.dump(output, f, indent=2)
-
-    print("\n✅ Saved to product.json")
-
-if __name__ == "__main__":
-    main()
+print("✅ Gemini-powered product content generated!")

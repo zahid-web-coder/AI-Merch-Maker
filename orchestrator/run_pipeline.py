@@ -1,31 +1,47 @@
+import os
 import json
 import requests
-from pathlib import Path
+from dotenv import load_dotenv
 
+# 🔐 Load credentials
+load_dotenv()
+SHOPIFY_STORE = os.getenv("SHOPIFY_STORE")
+SHOPIFY_ACCESS_TOKEN = os.getenv("SHOPIFY_ACCESS_TOKEN")
 
+# 📦 Load generated product
 with open("../content_generator/product.json", "r") as f:
     product_data = json.load(f)
 
+# 🌐 Shopify API setup
+url = f"https://{SHOPIFY_STORE}/admin/api/2023-04/products.json"
+headers = {
+    "Content-Type": "application/json",
+    "X-Shopify-Access-Token": SHOPIFY_ACCESS_TOKEN
+}
 
-mockup_image_url = "https://i.ibb.co/8nW09dDw/t-shirt.png"
-product_data["mockup_image"] = mockup_image_url
+# 📸 Upload mockup image URL manually generated or hosted
+payload = {
+    "product": {
+        "title": product_data.get("title", "Fallback Title"),
+        "body_html": product_data.get("description", "Fallback description"),
+        "vendor": "AI Merch Maker",
+        "product_type": "T-Shirt",
+        "tags": "AI, Generated, Gemini, Fun, FLUX.1",
+        "images": [
+            {
+                "src": "https://i.ibb.co/k29tVd7T/tshirt-mockup.png"  # replace if auto-hosted elsewhere
+            }
+        ]
+    }
+}
 
+# 🚀 Upload to Shopify
+response = requests.post(url, headers=headers, data=json.dumps(payload))
 
-product_data["image_source"] = "https://i.ibb.co/kVQGMB4P/waterfall.jpg"
-
-
-try:
-    with open("../bonus/auto_tags.json", "r") as tag_file:
-        product_data["auto_tags"] = json.load(tag_file)["tags"]
-except FileNotFoundError:
-    print("⚠️ No auto_tags.json found. Skipping bonus tags...")
-
-
-print("📡 Sending to fake publisher API...")
-print("🔍 JSON Being Sent:")
-print(json.dumps(product_data, indent=2))
-response = requests.post("http://localhost:8000/publish.php", json=product_data)
-
-# 🔹 Output response
-print("\n✅ Response:")
-print(response.json())
+# ✅ Response
+if response.status_code == 201:
+    print("✅ Product uploaded to Shopify!")
+    print(json.dumps(response.json(), indent=2))
+else:
+    print("❌ Failed to upload product:")
+    print(response.status_code, response.text)
