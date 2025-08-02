@@ -1,18 +1,29 @@
-# AI Merch Maker Lite 🎨👕
+🧠 AI Merch Maker 🛍️
+Generate & publish AI-designed T-shirts to Shopify – completely automated.
 
-An end-to-end AI-powered product automation pipeline that generates a T-shirt idea, mockup image, and simulates publishing — all with minimal manual input.
 
----
+
+🔥 Features
+✨ Gemini API: Generates creative T-shirt titles & descriptions.
+
+🎨 Hugging Face FLUX.1: Turns Gemini prompt into unique product artwork.
+
+🧵 Mockup Generator: Overlays AI image on a T-shirt template.
+
+📤 Shopify Integration: Automatically uploads products via Shopify API.
+
+📦 Fully automated pipeline: From text prompt to live product.
 
 ## 📦 Project Overview
 
 **AI Merch Maker Lite** is a 4-step project that combines AI + frontend + backend + scripting to simulate a real-world merch product pipeline.
 This project:
-- Auto-generates a T-shirt **title, description, and tags** using **OpenAI GPT**
-- Generates a product **image** using **DALL·E** or fallback
+- Auto-generates a T-shirt **title, description, and tags** using **Gemini API**
+- Generates a product **image** using **Hugging Face API** or fallback
 - Creates a **mockup image** by overlaying the design on a T-shirt using **JavaScript canvas**
 - Simulates a **publishing API** using **PHP**
 - Automates the whole workflow using a **Python Orchestrator**
+- **Shopify integration** Pushes the product to Shopify Website
 - Includes an optional **bonus AI/NLP tag extractor** using `nltk`
 
 ---
@@ -21,11 +32,12 @@ This project:
 
 | Task                       | Tech Used           |
 |----------------------------|---------------------|
-| Content Generator          | Python + OpenAI GPT |
-| Image Generator            | OpenAI DALL·E or Unsplash |
+| Content Generator          | Python + Gemini API |
+| Image Generator            | Higging Face API |
 | Mockup Visualizer          | HTML + CSS + JavaScript (Canvas API) |
 | Fake Product Publisher     | PHP (Server + API)  |
 | Pipeline Orchestrator      | Python              |
+| Shopify integration        | Python              |
 | Bonus (Offline Tag Gen)    | Python + NLTK       |
 
 ---
@@ -36,26 +48,30 @@ This project:
 
 ```
 AI-Merch-Maker/
-├── bonus/                         # 🔹 Bonus NLP Tag Generator (Offline)
+├── bonus/                         # 🔹 Bonus NLP Tag Generator
 │   ├── bonus_tag_generator.py    # Extracts tags from description using NLTK
 │   └── auto_tags.json            # (Optional) Saved tags from the bonus script
 
-├── content_generator/            # ✅ Step 1: Product Content Generator (Python)
-│   ├── generate_product.py       # Uses OpenAI GPT + DALL·E
-│   ├── generate_product_offline.py # Offline fallback with hardcoded content
-│   └── product.json              # Generated product data
+├── content_generator/
+│   ├── generate_product.py       # Uses Gemini to generate prompt
+│   ├── generate_image.py         # Uses Hugging Face (FLUX.1) to create image
+│   ├── flux_image.png            # AI image (auto-generated)
+│   └── product.json              # Contains title + description
 
-├── mock_generator/               # ✅ Step 2: Mockup Generator (HTML + JS + CSS)
+├── mock_generator/               Mockup Generator (HTML + JS + CSS)
 │   ├── index.html                # Canvas-based UI for T-shirt mockup
 │   ├── style.css                 # Styling for the mockup UI
 │   └── script.js                 # Logic to overlay design on T-shirt
 
-├── publisher_api/                # ✅ Step 3: Fake Publisher API (PHP)
+├── publisher_api/                 Fake Publisher API (PHP)
 │   ├── publish.php               # Receives and logs JSON product data
 │   └── log.txt                   # Log file with published data
 
-├── orchestrator/                 # ✅ Step 4: Automation Pipeline (Python)
+├── orchestrator/                 # Automation Pipeline (Python)
 │   └── run_pipeline.py           # Combines all steps and sends data
+
+├── shopify_integration/
+│   └── upload_to_shopify.py      # Pushes the product to Shopify
 
 ├── .env.example                  # 🔐 Sample environment config (API key placeholder)
 ├── requirements.txt              # 📦 Python dependencies
@@ -108,80 +124,81 @@ pip install -r requirements.txt
 ```
 ---
 3. Set up .env file:
- **Create a .env file in root (or use .env.example) with your OpenAI key:**
+ **Create a .env file in root (or use .env.example) with your Gemini API key:**
 
 ```ini
-OPENAI_API_KEY=your_openai_key_here
+GEMINI_API_KEY=your_google_gemini_api_key
+HF_API_TOKEN=your_huggingface_token
+SHOPIFY_STORE=your-store-name.myshopify.com
+SHOPIFY_ACCESS_TOKEN=your_shopify_access_token
 ```
 ---
-4.**To run offline fallback only:**
+
+4. **Generate AI content (Gemini):**
+```bash
+python content_generator/generate_product.py
+```
+---
+5.**Generate AI image (Hugging Face FLUX.1)**
+```bash
+python content_generator/generate_image.py
+```
+---
+6. **Preview mockup (optional, frontend)**
+->Open mockup_generator/mockup.html in browser.
+---
+
+7 **EXTRA- To run offline fallback only:**
 
 ```bash
 cd content_generator
 python generate_product_offline.py
 ```
 
-5.**To run full pipeline (requires API key):**
-
-```bash
-cd orchestrator
-python run_pipeline.py
-```
-
-6.**To run mock server (Step 3):**
+8.**To run mock server :**
 
 ```bash
 cd publisher_api
 php -S localhost:8000
 ```
 
-7.To run mockup generator:
-
-Open mock_generator/index.html in your browser
+9 .**Upload to Shopify**
+```bash
+python shopify_integration/upload_to_shopify.py
+```
+---
+10.**OR Run entire pipeline**
+```bash
+python run_pipeline.py
+```
+---
 
 ---
 
-## 💡 Sample Output
-product.json: Contains generated title, description, tags, and image URL
-
-canvas preview of T-shirt mockup
-
-log.txt: Received JSON with all fields
-
-Bonus: NLP extracted auto_tags
-
----
-
-## 📸 Sample Output Sections
+## 📸 Sample Output 
 
 ```json
 {
-  "title": "Retro Pizza Astronaut Tee",
-  "description": "Bring the calm and majesty of nature with you wherever you go...",
-  "tags": ["waterfall", "nature", "serene", ...],
-  "mockup_image": "https://i.ibb.co/8nW09dDw/t-shirt.png",
-  "auto_tags": ["nature", "flow", "calm", ...]
+  "title": "Neo-Mind: Glitch in the Matrix Tee",
+  "description": "Got that AI-induced existential crisis? Embrace the glitch...",
+  "image": "flux_image.png"
 }
+
 ```
 ---
-## 🔐 Environment Setup
-Create a .env file with:
-```ini
-OPENAI_API_KEY=your_openai_api_key_here.
-```
-For demo purposes, the repo includes an offline fallback using product.json.
 
+## 🧠 Credits
+Built by: Mohammed Zahid
+
+Models used:
+
+Gemini 1.5 Flash
+
+FLUX.1
 ---
-## ✅ Completed Features
- Product content generation (offline fallback included)
 
- T-shirt design mockup (HTML Canvas)
-
- Fake publishing API (PHP)
-
- Pipeline orchestrator
-
- Bonus: NLP auto-tag generator
+🛡️ Disclaimer
+This project is for educational and portfolio use only. API tokens and secrets should be stored securely.
 ---
 
 
