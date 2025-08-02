@@ -1,4 +1,5 @@
-🧠 AI Merch Maker 🛍️
+# 🧠 AI Merch Maker 🛍️
+
 Generate & publish AI-designed T-shirts to Shopify – completely automated.
 
 
