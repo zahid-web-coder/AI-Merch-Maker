@@ -1,12 +1,12 @@
 # 🤖 AI Merch Maker 🛍️
 
 Generate & publish AI-designed T-shirts to Shopify – completely automated.
-### 🔮 Sample AI-Generated T-Shirt Mockup
+### 🔮 Sample AI-Generated T-Shirt-1 
 
 ![AI T-Shirt](https://raw.githubusercontent.com/zahid-web-coder/AI-Merch-Maker/main/flux_image.png)
-![AI T-Shirt](https://raw.githubusercontent.com/zahid-web-coder/AI-Merch-Maker/main/flux_image1.png)
+
 ---
-🔥 Features
+## 🔥 Features
 ✨ Gemini API: Generates creative T-shirt titles & descriptions.
 
 🎨 Hugging Face FLUX.1: Turns Gemini prompt into unique product artwork.
@@ -30,6 +30,7 @@ This project:
 - Includes an optional **bonus AI/NLP tag extractor** using `nltk`
 
 ---
+
 
 ## 🛠️ Tech Stack
 
@@ -213,6 +214,10 @@ python run_pipeline.py
 }
 
 ```
+---
+### 🔮 Sample AI-Generated T-Shirt-2
+
+![AI T-Shirt](https://raw.githubusercontent.com/zahid-web-coder/AI-Merch-Maker/main/flux_image1.png)
 ---
 
 ## 🧠 Credits
