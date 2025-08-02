@@ -93,6 +93,7 @@ This project automates the creation and upload of AI-generated T-shirt products 
 - `generate_product.py`: Uses **Gemini API** to generate a creative T-shirt title and description.
 - Saves the content into `product.json` for use in the pipeline.
 
+
 ### 🎨 Step 2: Image Generator (Python)
 - `generate_image.py`: Sends the Gemini prompt to **Hugging Face FLUX.1 API** (via fal.ai provider) to generate an AI image.
 - Saves it as `flux_image.png`.
@@ -126,6 +127,7 @@ GEMINI_API_KEY=your-gemini-api-key
 HF_API_TOKEN=your-huggingface-token
 SHOPIFY_STORE=your-store.myshopify.com
 SHOPIFY_ACCESS_TOKEN=your-shopify-access-token`
+```
 
 --- 
 
