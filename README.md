@@ -170,7 +170,7 @@ python content_generator/generate_image.py
 ```
 ---
 6. **Preview mockup (optional, frontend)**
-->Open mockup_generator/mockup.html in browser.
+Open mockup_generator/mockup.html in browser.
 ---
 
 7 **EXTRA- To run offline fallback only:**
