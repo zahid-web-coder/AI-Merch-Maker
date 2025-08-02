@@ -1,7 +1,7 @@
 # 🤖 AI Merch Maker 🛍️
 
 Generate & publish AI-designed T-shirts to Shopify – completely automated.
-###  👕👽Sample AI-Generated T-Shirt Mockup
+### 👕Sample AI-Generated T-Shirt Mockup
 
 ![AI T-Shirt](https://raw.githubusercontent.com/zahid-web-coder/AI-Merch-Maker/main/flux_image.png)
 
