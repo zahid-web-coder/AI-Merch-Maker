@@ -225,8 +225,9 @@ FLUX.1
 
 ---
 
-🛡️ Disclaimer
+## 🛡️ Disclaimer
 This project is for educational and portfolio use only. API tokens and secrets should be stored securely.
+
 ---
 
 
