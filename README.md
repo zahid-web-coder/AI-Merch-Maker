@@ -170,6 +170,7 @@ python content_generator/generate_image.py
 ```
 ---
 6. **Preview mockup (optional, frontend)**
+
 Open mockup_generator/mockup.html in browser.
 ---
 
