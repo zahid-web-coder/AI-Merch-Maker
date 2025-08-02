@@ -134,7 +134,7 @@ SHOPIFY_ACCESS_TOKEN=your-shopify-access-token`
 
 ## ⚙️ Setup Instructions
 
-1. **Clone this repo:**
+1.**Clone this repo:**
 
 ```bash
 git clone https://github.com/zahid-web-coder/AI-Merch-Maker.git
@@ -142,13 +142,13 @@ cd AI-Merch-Maker
 ```
 ---
 
-2. **Install dependencies:**
+2.**Install dependencies:**
 
 ```bash
 pip install -r requirements.txt
 ```
 ---
-3. Set up .env file:
+3.Set up .env file:
  **Create a .env file in root (or use .env.example) with your Gemini API key:**
 
 ```ini
@@ -159,7 +159,7 @@ SHOPIFY_ACCESS_TOKEN=your_shopify_access_token
 ```
 ---
 
-4. **Generate AI content (Gemini):**
+4.**Generate AI content (Gemini):**
 ```bash
 python content_generator/generate_product.py
 ```
@@ -169,13 +169,13 @@ python content_generator/generate_product.py
 python content_generator/generate_image.py
 ```
 ---
-6. **Preview mockup (optional, frontend)**
+6.**Preview mockup (optional, frontend)**
 
 Open mockup_generator/mockup.html in browser
 
 ---
 
-7 **EXTRA- To run offline fallback only:**
+7.**EXTRA- To run offline fallback only:**
 
 ```bash
 cd content_generator
@@ -189,7 +189,7 @@ cd publisher_api
 php -S localhost:8000
 ```
 
-9 .**Upload to Shopify**
+9.**Upload to Shopify**
 ```bash
 python shopify_integration/upload_to_shopify.py
 ```
